@@ -1,6 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using pet_shop_api.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+// Config DB
+builder.Services.AddDbContext<ApplicationDBContext>(options =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("local");
+    options.UseSqlServer(connectionString);
+});
+
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
