@@ -71,8 +71,9 @@ namespace pet_shop_api.Controllers
 
             product.Title = dto.Title;
             product.Brand = dto.Brand;
+            product.UpdatedAt = DateTime.Now;
 
-           await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
            return Ok("Product updated successfully");
         }
